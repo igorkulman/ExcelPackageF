@@ -11,7 +11,14 @@ module Excel =
     let getWorksheet (index:int) filename = 
         let file = new FileInfo(filename) 
         let xlPackage = new ExcelPackage(file)
-        xlPackage.Workbook.Worksheets.[index] 
+        xlPackage.Workbook.Worksheets.[index]
+        
+    let getWorksheets filename = seq {
+        let file = new FileInfo(filename) 
+        let xlPackage = new ExcelPackage(file)
+        for i in 1..xlPackage.Workbook.Worksheets.Count do
+            yield xlPackage.Workbook.Worksheets.[i]
+        }
 
     let getMaxRowNumber (worksheet:ExcelWorksheet) = 
         let nav = worksheet.WorksheetXml.CreateNavigator()
