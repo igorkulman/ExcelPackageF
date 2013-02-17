@@ -85,7 +85,7 @@ module Excel =
     /// <returns>Sequence of cell values</returns>
     let getRow rowIndex (worksheet:ExcelWorksheet) = seq { 
         let maxCol = getMaxColNumber worksheet  
-        for i in 1..rowIndex do        
-            let content = worksheet.Cell(rowIndex,maxCol).Value
+        for i in 1..maxCol do        
+            let content = worksheet.Cell(rowIndex,i).Value
             yield content
     }
