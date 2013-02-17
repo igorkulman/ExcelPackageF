@@ -33,4 +33,14 @@ type Test() =
 
         Assert.AreEqual(row.Length,2)
         Assert.AreEqual(row,["x";"y"])
+
+    [<Test>]
+    member x.GetCol () = 
+        let col = 
+            worksheet
+            |> Excel.getColumn 2
+            |> List.ofSeq
+
+        Assert.AreEqual(col.Length,3)
+        Assert.AreEqual(col,["b";"2";"y"])
         
