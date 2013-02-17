@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF", "ExcelPackageF.fsproj", "{675F335D-6979-48EF-BAC6-527A86F303FE}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF.Tests", "..\ExcelPackageF.Tests\ExcelPackageF.Tests.fsproj", "{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{675F335D-6979-48EF-BAC6-527A86F303FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675F335D-6979-48EF-BAC6-527A86F303FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675F335D-6979-48EF-BAC6-527A86F303FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
