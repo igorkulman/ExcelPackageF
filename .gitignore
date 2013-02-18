@@ -3,3 +3,6 @@
 /tools/FAKE
 
 /build
+
+/packages
+/test
