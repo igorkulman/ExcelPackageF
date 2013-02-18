@@ -40,21 +40,13 @@ module Excel =
     /// <param name="worksheet">The input worksheet.</param>
     /// <returns>Maximum row number</returns>
     let getMaxRowNumber (worksheet:ExcelWorksheet) = 
-        let nav = worksheet.WorksheetXml.CreateNavigator()
-        let exp = nav.Compile("//*[name()='row']/@r")
-        exp.AddSort("../@r", XmlSortOrder.Descending, XmlCaseOrder.None, "", XmlDataType.Number)
-        let node = nav.SelectSingleNode(exp).UnderlyingObject :?> XmlNode
-        int node.InnerText;  
+        worksheet.Dimension.End.Row 
 
     /// <summary>Gets the maximum column number for a given worksheet</summary>    
     /// <param name="worksheet">The input worksheet.</param>
     /// <returns>Maximum column number</returns>
     let getMaxColNumber (worksheet:ExcelWorksheet) = 
-        let nav = worksheet.WorksheetXml.CreateNavigator()
-        let exp = nav.Compile("//*[name()='c']/@colNumber")
-        exp.AddSort("../@colNumber", XmlSortOrder.Descending, XmlCaseOrder.None, "", XmlDataType.Number)
-        let node = nav.SelectSingleNode(exp).UnderlyingObject :?> XmlNode
-        int node.InnerText;  
+        worksheet.Dimension.End.Column
 
     /// <summary>Gets all the values from all the cells in a given worksheet in a sequence. The traversal is done line by line</summary>    
     /// <param name="worksheet">The input worksheet.</param>
@@ -64,7 +56,7 @@ module Excel =
         let maxCol = getMaxColNumber worksheet
         for i in 1..maxRow do
             for j in 1..maxCol do
-                let content = worksheet.Cell(i,j).Value
+                let content = worksheet.Cells.[i,j].Value
                 yield content
     }
 
@@ -75,7 +67,7 @@ module Excel =
     let getColumn colIndex (worksheet:ExcelWorksheet) = seq { 
         let maxRow = getMaxRowNumber worksheet  
         for i in 1..maxRow do        
-            let content = worksheet.Cell(i,colIndex).Value
+            let content = worksheet.Cells.[i,colIndex].Value.ToString()
             yield content
     }
 
@@ -86,6 +78,6 @@ module Excel =
     let getRow rowIndex (worksheet:ExcelWorksheet) = seq { 
         let maxCol = getMaxColNumber worksheet  
         for i in 1..maxCol do        
-            let content = worksheet.Cell(rowIndex,i).Value
+            let content = worksheet.Cells.[rowIndex,i].Value.ToString()
             yield content
     }
