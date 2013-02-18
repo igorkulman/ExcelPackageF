@@ -7,7 +7,7 @@ open ExcelPackageF
 [<TestFixture>]
 type Test() =
     let worksheet = 
-        @"..\..\SimpleTest.xlsx"
+        @"SimpleTest.xlsx"
         |> Excel.getWorksheetByIndex 1
 
     [<Test>]
