@@ -81,3 +81,21 @@ module Excel =
             let content = worksheet.Cells.[rowIndex,i].Value.ToString()
             yield content
     }
+
+    /// <summary>Creates a new Excel document. Save method needs to be called to write the file do disk </summary>       
+    /// <param name="filename">The document filename.</param>
+    /// <returns>Excel document</returns>
+    let createDocument filename = 
+        let newFile = new FileInfo(filename)
+        let package = new ExcelPackage(newFile)        
+        package
+
+    /// <summary>Adds a worksheet with a specified name to the Excel document</summary>      
+    /// <param name="sheetName">Name of the inserted worksheet.</param> 
+    /// <param name="document">The document.</param>
+    /// <returns>Excel worksheet</returns>
+    let addWorksheet sheetName (document:ExcelPackage) =
+        document.Workbook.Worksheets.Add(sheetName) |> ignore
+        let worksheet = document.Workbook.Worksheets.[document.Workbook.Worksheets.Count]
+        worksheet.Name <- sheetName; 
+        worksheet

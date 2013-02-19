@@ -10,6 +10,10 @@ type Test() =
         @"SimpleTest.xlsx"
         |> Excel.getWorksheetByIndex 1
 
+    let newWorksheet =
+        @"NewWorksheet.xlsx"
+        |> Excel.createDocument
+
     [<Test>]
     member x.LoadWorksheet () =
         Assert.IsNotNull(worksheet)
@@ -43,4 +47,21 @@ type Test() =
 
         Assert.AreEqual(col.Length,3)
         Assert.AreEqual(col,["b";"2";"y"])
-        
+
+    [<Test>]
+    member x.AddWorksheet () = 
+        newWorksheet
+        |> Excel.addWorksheet "Sheet A"
+        |> ignore
+
+        Assert.AreEqual(newWorksheet.Workbook.Worksheets.Count,1)
+
+        newWorksheet
+        |> Excel.addWorksheet "Sheet B"
+        |> ignore
+
+        Assert.AreEqual(newWorksheet.Workbook.Worksheets.Count,2)
+
+    [<Test>]
+    member x.Save () =
+        newWorksheet.Save()
