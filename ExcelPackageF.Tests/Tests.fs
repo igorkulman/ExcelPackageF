@@ -10,7 +10,7 @@ type Test() =
         @"SimpleTest.xlsx"
         |> Excel.getWorksheetByIndex 1
 
-    let newWorksheet =
+    let newDocument =
         @"NewWorksheet.xlsx"
         |> Excel.createDocument
 
@@ -47,21 +47,71 @@ type Test() =
 
         Assert.AreEqual(col.Length,3)
         Assert.AreEqual(col,["b";"2";"y"])
+    
+    member x.DeleteWorksheets () =
+        newDocument.Workbook.Worksheets
+        |> Seq.iter (fun x -> newDocument.Workbook.Worksheets.Delete(newDocument.Workbook.Worksheets.Count))
+
+        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,0)
 
     [<Test>]
     member x.AddWorksheet () = 
-        newWorksheet
+        x.DeleteWorksheets |> ignore
+
+        newDocument
         |> Excel.addWorksheet "Sheet A"
         |> ignore
 
-        Assert.AreEqual(newWorksheet.Workbook.Worksheets.Count,1)
+        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,1)
 
-        newWorksheet
+        newDocument
         |> Excel.addWorksheet "Sheet B"
         |> ignore
 
-        Assert.AreEqual(newWorksheet.Workbook.Worksheets.Count,2)
+        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,2)
+
+    [<Test>]
+    member x.AddRow () = 
+        x.DeleteWorksheets |> ignore
+
+        let newSheet = 
+            newDocument
+            |> Excel.addWorksheet "Test sheet"
+
+        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,1)
+
+        ["a";"b";"c";"d"]
+            |> Excel.addRow 1 newSheet            
+
+        let row = 
+            newSheet
+            |> Excel.getRow 1
+            |> List.ofSeq
+
+        Assert.AreEqual(row.Length,4)
+        Assert.AreEqual(row,["a";"b";"c";"d"])
+
+    [<Test>]
+    member x.AddCol () = 
+        x.DeleteWorksheets |> ignore
+
+        let newSheet = 
+            newDocument
+            |> Excel.addWorksheet "Test sheet 2"
+
+        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,1)
+
+        ["1";"2";"3";"4";"5"]
+            |> Excel.addColumn 1 newSheet            
+
+        let col = 
+            newSheet
+            |> Excel.getColumn 1
+            |> List.ofSeq
+
+        Assert.AreEqual(col.Length,5)
+        Assert.AreEqual(col,["1";"2";"3";"4";"5"])
 
     [<Test>]
     member x.Save () =
-        newWorksheet.Save()
+        newDocument.Save()

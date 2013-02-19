@@ -86,7 +86,10 @@ module Excel =
     /// <param name="filename">The document filename.</param>
     /// <returns>Excel document</returns>
     let createDocument filename = 
-        let newFile = new FileInfo(filename)
+        if (File.Exists(filename)) then
+            File.Delete(filename)
+
+        let newFile = new FileInfo(filename)        
         let package = new ExcelPackage(newFile)        
         package
 
@@ -99,3 +102,26 @@ module Excel =
         let worksheet = document.Workbook.Worksheets.[document.Workbook.Worksheets.Count]
         worksheet.Name <- sheetName; 
         worksheet
+
+    /// <summary>Adds a sequence as a row in to a worksheet </summary>       
+    /// <param name="rownIndex">The row index.</param>
+    /// <param name="worksheet">The input worksheet.</param>
+    /// <param name="seq">The input sequence.</param>
+    /// <returns>unit</returns>
+    let addRow rowIndex (worksheet:ExcelWorksheet) seq =
+        seq
+        |> Seq.iteri (fun i x ->
+            worksheet.Cells.[rowIndex,i+1].Value <- x
+            )
+
+    /// <summary>Adds a sequence as a column in to a worksheet </summary>       
+    /// <param name="colIndex">The column index.</param>
+    /// <param name="worksheet">The input worksheet.</param>
+    /// <param name="seq">The input sequence.</param>
+    /// <returns>unit</returns>
+    let addColumn colIndex (worksheet:ExcelWorksheet) seq =
+        seq
+        |> Seq.iteri (fun i x ->
+            worksheet.Cells.[i+1,colIndex].Value <- x
+            )
+            
