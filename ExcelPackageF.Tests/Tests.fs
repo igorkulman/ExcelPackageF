@@ -5,31 +5,27 @@ open NUnit.Framework
 open ExcelPackageF
 
 [<TestFixture>]
-type Test() =
+type ``Test reading Excel files`` () =
     let worksheet = 
         @"SimpleTest.xlsx"
-        |> Excel.getWorksheetByIndex 1
-
-    let newDocument =
-        @"NewWorksheet.xlsx"
-        |> Excel.createDocument
+        |> Excel.getWorksheetByIndex 1    
 
     [<Test>]
-    member x.LoadWorksheet () =
+    member x.``Worksheet should load without problems`` () =
         Assert.IsNotNull(worksheet)
 
     [<Test>]
-    member x.GetRowCount () = 
+    member x.``Worksheet should have 3 rows`` () = 
         let maxRowIndex = Excel.getMaxRowNumber worksheet
         Assert.AreEqual(maxRowIndex,3)
 
     [<Test>]
-    member x.GetColCount () = 
+    member x.``Worksheet should have 2 columns`` () = 
         let maxColIndex = Excel.getMaxColNumber worksheet
         Assert.AreEqual(maxColIndex,2)
 
     [<Test>]
-    member x.GetRow () = 
+    member x.``Third row should be equal to (x,y)`` () = 
         let row = 
             worksheet
             |> Excel.getRow 3
@@ -39,7 +35,7 @@ type Test() =
         Assert.AreEqual(row,["x";"y"])
 
     [<Test>]
-    member x.GetCol () = 
+    member x.``Second columns should be equal to (b,2,y)`` () = 
         let col = 
             worksheet
             |> Excel.getColumn 2
@@ -48,15 +44,16 @@ type Test() =
         Assert.AreEqual(col.Length,3)
         Assert.AreEqual(col,["b";"2";"y"])
     
-    member x.DeleteWorksheets () =
-        newDocument.Workbook.Worksheets
-        |> Seq.iter (fun x -> newDocument.Workbook.Worksheets.Delete(newDocument.Workbook.Worksheets.Count))
+    
 
-        Assert.AreEqual(newDocument.Workbook.Worksheets.Count,0)
-
+[<TestFixture>]
+type ``Test writing Excel files`` () =
+    
     [<Test>]
-    member x.AddWorksheet () = 
-        x.DeleteWorksheets |> ignore
+    member x.``After adding two worksheet the count should be two`` () = 
+        let newDocument =
+            @"NewWorksheet.xlsx"
+            |> Excel.createDocument
 
         newDocument
         |> Excel.addWorksheet "Sheet A"
@@ -71,8 +68,10 @@ type Test() =
         Assert.AreEqual(newDocument.Workbook.Worksheets.Count,2)
 
     [<Test>]
-    member x.AddRow () = 
-        x.DeleteWorksheets |> ignore
+    member x.``Added row should match after being read back`` () = 
+        let newDocument =
+            @"NewWorksheet2.xlsx"
+            |> Excel.createDocument
 
         let newSheet = 
             newDocument
@@ -92,8 +91,10 @@ type Test() =
         Assert.AreEqual(row,["a";"b";"c";"d"])
 
     [<Test>]
-    member x.AddCol () = 
-        x.DeleteWorksheets |> ignore
+    member x.``Added column should match after being read back`` () = 
+        let newDocument =
+            @"NewWorksheet3.xlsx"
+            |> Excel.createDocument
 
         let newSheet = 
             newDocument
@@ -111,7 +112,3 @@ type Test() =
 
         Assert.AreEqual(col.Length,5)
         Assert.AreEqual(col,["1";"2";"3";"4";"5"])
-
-    [<Test>]
-    member x.Save () =
-        newDocument.Save()
