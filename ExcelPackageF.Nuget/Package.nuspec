@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ExcelPackageF</id>
+    <version>1.0.1</version>
+    <title>ExcelPackageF</title>
+    <authors>Igor Kulman</authors>
+    <owners>Igor Kulman</owners>
+    <description>
+      ExcelPackageF is a simple F# wrapper over the EPPlus library
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <summary>
+      ExcelPackageF is a simple F# wrapper over the EPPlus library
+    </summary>
+    <language>en-US</language>
+    <projectUrl>http://code.kulman.sk/excelpackagef</projectUrl>
+  
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    
+    <copyright>Copyright  2013 Igor Kulman</copyright>    
+    <dependencies>
+        <group targetFramework="net40">
+          <dependency id="EPPlus" version="3.1.2"  />
+        </group>
+    </dependencies>
+    <references></references>
+    <tags></tags>
+  </metadata>
+  <files>
+    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.dll" target="lib\net40\ExcelPackageF.dll" />
+    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.pdb" target="lib\net40\ExcelPackageF.pdb" />
+    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.XML" target="lib\net40\ExcelPackageF.XML" />
+  </files>
+</package>

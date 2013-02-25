@@ -7,3 +7,9 @@
 /packages
 /test
 /*.suo
+/ExcelPackageF.Nuget/*.bak
+/ExcelPackageF.Nuget/*.nupkg
+/ExcelPackageF.Nuget/content
+/ExcelPackageF.Nuget/lib
+/ExcelPackageF.Nuget/obj
+/ExcelPackageF.Nuget/bin
