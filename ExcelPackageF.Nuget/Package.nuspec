@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ExcelPackageF</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>ExcelPackageF</title>
     <authors>Igor Kulman</authors>
     <owners>Igor Kulman</owners>
@@ -15,7 +15,7 @@
       ExcelPackageF is a simple F# wrapper over the EPPlus library
     </summary>
     <language>en-US</language>
-    <projectUrl>http://code.kulman.sk/excelpackagef</projectUrl>
+    <projectUrl>https://github.com/igorkulman/ExcelPackageF</projectUrl>
   
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     
