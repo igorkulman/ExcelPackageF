@@ -13,3 +13,5 @@
 /ExcelPackageF.Nuget/lib
 /ExcelPackageF.Nuget/obj
 /ExcelPackageF.Nuget/bin
+
+/ExcelPackageF.Nuget/NuGet.log
