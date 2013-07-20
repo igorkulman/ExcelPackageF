@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ExcelPackageF</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>ExcelPackageF</title>
     <authors>Igor Kulman</authors>
     <owners>Igor Kulman</owners>
@@ -16,8 +16,8 @@
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/igorkulman/ExcelPackageF</projectUrl>
-  
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.github.com/igorkulman/ExcelPackageF/master/LICENSE.txt</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
     
     <copyright>Copyright  2013 Igor Kulman</copyright>    
     <dependencies>
