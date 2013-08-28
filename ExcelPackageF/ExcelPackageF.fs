@@ -67,8 +67,12 @@ module Excel =
     let getColumn colIndex (worksheet:ExcelWorksheet) = seq { 
         let maxRow = getMaxRowNumber worksheet  
         for i in 1..maxRow do        
-            let content = worksheet.Cells.[i,colIndex].Value.ToString()
-            yield content
+            let value = worksheet.Cells.[i,colIndex].Value;
+            if value<>null then
+                let content = value.ToString()
+                yield content
+            else
+                yield ""
     }
 
     /// <summary>Gets all the values from given column in a given worksheet in a sequence. </summary>   
@@ -78,8 +82,12 @@ module Excel =
     let getRow rowIndex (worksheet:ExcelWorksheet) = seq { 
         let maxCol = getMaxColNumber worksheet  
         for i in 1..maxCol do        
-            let content = worksheet.Cells.[rowIndex,i].Value.ToString()
-            yield content
+            let value = worksheet.Cells.[rowIndex,i].Value
+            if value<>null then
+                let content = value.ToString()
+                yield content
+            else
+                yield ""
     }
 
     /// <summary>Creates a new Excel document. Save method needs to be called to write the file do disk </summary>       
