@@ -40,20 +40,19 @@
 
 <p>The ExcelPackageF namespace contains the following methods</p>
 
-<p>Excel.getWorksheets<br>
-Excel.getWorksheetByName<br>
-Excel.getWorksheetByIndex<br>
-Excel.getMaxRowNumber<br>
-Excel.getMaxColNumber<br>
-Excel.getContent<br>
-Excel.getColumn<br>
-Excel.getRow  </p>
+<pre><code>Excel.getWorksheets
+Excel.getWorksheetByName
+Excel.getWorksheetByIndex
+Excel.getMaxRowNumber
+Excel.getMaxColNumber
+Excel.getContent
+Excel.getColumn
+Excel.getRow  
+</code></pre>
 
 <p>For example, if you want to read the whole data from sheet number 1 from a file called test.xlsx  </p>
 
-<pre><code>#!fsharp
-
-let data = 
+<pre><code>let data = 
         "test.xlsx"
         |&gt; Excel.getWorksheetByIndex 1
         |&gt; Excel.getContent 
