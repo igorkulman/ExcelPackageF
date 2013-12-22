@@ -41,7 +41,7 @@ Target "Test" (fun _ ->
 )
 
 Target "Default" (fun _ ->
-    trace "Hello World from FAKE"
+    trace "Build completed"
 )
  
 // Dependencies
