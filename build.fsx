@@ -9,7 +9,7 @@ let buildDir = @".\build\"
 let testDir  = @".\test\"
 let packagesDir = @".\packages"
 let packagingRoot = "./packaging/"
-let packagesVersion = "1.0.4"
+let packagesVersion = "1.0.5"
 
 // tools
 let nunitVersion = GetPackageVersion packagesDir "NUnit.Runners"
