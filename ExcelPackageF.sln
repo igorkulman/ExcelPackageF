@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF", "ExcelPackageF\ExcelPackageF.fsproj", "{675F335D-6979-48EF-BAC6-527A86F303FE}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF.Tests", "ExcelPackageF.Tests\ExcelPackageF.Tests.fsproj", "{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{13FA614F-CC9E-4B6B-8EC7-04047B6CA4D3}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF", "ExcelPackageF\ExcelPackageF.fsproj", "{675F335D-6979-48EF-BAC6-527A86F303FE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExcelPackageF.Tests", "ExcelPackageF.Tests\ExcelPackageF.Tests.fsproj", "{A6E80E80-A56C-4325-A1CB-34CBF2472D7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelPackageF.Nuget", "ExcelPackageF.Nuget\ExcelPackageF.Nuget.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
