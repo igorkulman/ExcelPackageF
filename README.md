@@ -1,5 +1,7 @@
 # ExcelPackageF
 
+[![Build status](https://ci.appveyor.com/api/projects/status/fvv818glcdra359k)](https://ci.appveyor.com/project/igorkulman/excelpackagef)
+
 ExcelPackageF is a simple F# wrapper over the [EPPlus library](http://epplus.codeplex.com/).
 
 ## Motivation
@@ -32,5 +34,3 @@ let data =
 data 
     |> Seq.iter (fun x-> printfn "%s" x)
 ```
-
-[![Build status](https://ci.appveyor.com/api/projects/status/fvv818glcdra359k)](https://ci.appveyor.com/project/igorkulman/excelpackagef)
