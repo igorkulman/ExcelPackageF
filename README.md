@@ -32,3 +32,5 @@ let data =
 data 
     |> Seq.iter (fun x-> printfn "%s" x)
 ```
+
+[![Build status](https://ci.appveyor.com/api/projects/status/fvv818glcdra359k)](https://ci.appveyor.com/project/igorkulman/excelpackagef)
