@@ -8,6 +8,8 @@ RestorePackages()
 let buildDir = @".\build\"
 let testDir  = @".\test\"
 let packagesDir = @".\packages"
+let packagingRoot = "./packaging/"
+let packagesVersion = "1.0.4"
 
 // tools
 let nunitVersion = GetPackageVersion packagesDir "NUnit.Runners"
@@ -16,7 +18,7 @@ let nunitPath = sprintf @"./packages/NUnit.Runners.%s/tools/" nunitVersion
  
 // Targets
 Target "Clean" (fun _ ->
-    CleanDir buildDir
+    CleanDirs [buildDir; testDir; packagingRoot]
 )
 
 Target "BuildApp" (fun _ ->
@@ -40,6 +42,19 @@ Target "Test" (fun _ ->
              OutputFile = testDir + @"TestResults.xml" })
 )
 
+Target "CreateNugetPackage" (fun _ ->    
+    NuGet (fun p -> 
+        {p with                  
+            Project = "ExcelPackageF"          
+            OutputPath = packagingRoot
+            WorkingDir = buildDir
+            Version = packagesVersion
+            Dependencies =
+                ["EPPlus", GetPackageVersion "./packages/" "EPPlus"]
+            Publish = false
+            }) "ExcelPackageF.nuspec"
+)
+
 Target "Default" (fun _ ->
     trace "Build completed"
 )
@@ -49,6 +64,7 @@ Target "Default" (fun _ ->
   ==> "BuildApp"
   ==> "BuildTest"
   ==> "Test"
+  ==> "CreateNugetPackage"
   ==> "Default"
  
 // start build

@@ -19,7 +19,7 @@
     <licenseUrl>https://raw.github.com/igorkulman/ExcelPackageF/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     
-    <copyright>Copyright  2013 Igor Kulman</copyright>    
+    <copyright>Copyright 2013-2014 Igor Kulman</copyright>    
     <dependencies>
         <group targetFramework="net40">
           <dependency id="EPPlus" version="3.1.2"  />
@@ -29,8 +29,8 @@
     <tags></tags>
   </metadata>
   <files>
-    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.dll" target="lib\net40\ExcelPackageF.dll" />
-    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.pdb" target="lib\net40\ExcelPackageF.pdb" />
-    <file src="..\ExcelPackageF\bin\Release\ExcelPackageF.XML" target="lib\net40\ExcelPackageF.XML" />
+    <file src="ExcelPackageF.dll" target="lib\net40\ExcelPackageF.dll" />
+    <file src="ExcelPackageF.pdb" target="lib\net40\ExcelPackageF.pdb" />
+    <file src="ExcelPackageF.XML" target="lib\net40\ExcelPackageF.XML" />
   </files>
 </package>
